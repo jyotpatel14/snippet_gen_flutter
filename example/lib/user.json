@@ -1,0 +1,8 @@
+{
+  "user_id": "sadasd",
+  "phone": "84684656",
+  "is_active": true,
+  "hobbies": {
+    "music": ["listening", "singing"]
+  }
+}
