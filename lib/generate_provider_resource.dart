@@ -5,7 +5,7 @@ import 'package:snippet_gen/templates/provider/controller.dart';
 import 'package:snippet_gen/templates/provider/provider.dart';
 import 'package:snippet_gen/templates/common/repository.dart';
 
-void generateProviderResource(String entity) {
+void generateProviderResource(String entity, bool isRepoAbstract) {
   final lower = entity.toLowerCase();
   final pascal = entity;
 
@@ -17,7 +17,7 @@ void generateProviderResource(String entity) {
 
   generateController(backendDir.path, pascal, lower);
   generateProvider(backendDir.path, pascal, lower);
-  generateRepository(backendDir.path, pascal, lower);
+  generateRepository(backendDir.path, pascal, lower, isRepoAbstract);
 
   generateDtos(modelDir.path, pascal, lower);
   generateModel(modelDir.path, pascal, lower);

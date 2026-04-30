@@ -1,6 +1,14 @@
 import 'dart:io';
 
-void generateRepository(String path, String pascal, String lower) {
+import 'package:snippet_gen/my_print.dart';
+
+void generateRepository(
+  String path,
+  String pascal,
+  String lower,
+  bool isAbstract,
+) {
+  MyPrint.printOnConsole("IsRepoAbs $isAbstract");
   final file = File('$path/${lower}_repository.dart');
 
   file.writeAsStringSync('''
@@ -18,6 +26,9 @@ class ${pascal}Repository {
   const ${pascal}Repository({required this.apiController});
 
   Future<DataResponseModel<dynamic>> getAll() async {
+
+    ${!isAbstract ? '''
+    
     ApiEndpoints apiEndpoints = apiController.apiEndpoints;
 
     MyPrint.printOnConsole("${pascal} -> Get All");
@@ -33,10 +44,14 @@ class ${pascal}Repository {
     return await apiController.callApi<dynamic>(
       apiCallModel: apiCallModel,
     );
+  ''' : "// TODO: implement to fetch all"}
+    
   }
 
   Future<DataResponseModel<dynamic>> getById(String id) async {
-    ApiEndpoints apiEndpoints = apiController.apiEndpoints;
+
+    ${!isAbstract ? '''
+ ApiEndpoints apiEndpoints = apiController.apiEndpoints;
 
     MyPrint.printOnConsole("${pascal} -> Get By Id: \$id");
 
@@ -51,10 +66,13 @@ class ${pascal}Repository {
     return await apiController.callApi<dynamic>(
       apiCallModel: apiCallModel,
     );
+''' : "// TODO: implement to get by id"}
+   
   }
 
   Future<DataResponseModel<dynamic>> create(dynamic request) async {
-    ApiEndpoints apiEndpoints = apiController.apiEndpoints;
+    ${!isAbstract ? '''
+  ApiEndpoints apiEndpoints = apiController.apiEndpoints;
 
     MyPrint.printOnConsole("${pascal} -> Create");
 
@@ -70,10 +88,12 @@ class ${pascal}Repository {
     return await apiController.callApi<dynamic>(
       apiCallModel: apiCallModel,
     );
+''' : "// TODO: implement to create"}
   }
 
   Future<DataResponseModel<dynamic>> update(String id, dynamic request) async {
-    ApiEndpoints apiEndpoints = apiController.apiEndpoints;
+    ${!isAbstract ? ''' 
+      ApiEndpoints apiEndpoints = apiController.apiEndpoints;
 
     MyPrint.printOnConsole("${pascal} -> Update: \$id");
 
@@ -89,10 +109,12 @@ class ${pascal}Repository {
     return await apiController.callApi<dynamic>(
       apiCallModel: apiCallModel,
     );
+    ''' : "// TODO: Implement update item"}
   }
 
   Future<DataResponseModel<dynamic>> delete(String id) async {
-    ApiEndpoints apiEndpoints = apiController.apiEndpoints;
+    ${!isAbstract ? '''
+  ApiEndpoints apiEndpoints = apiController.apiEndpoints;
 
     MyPrint.printOnConsole("${pascal} -> Delete: \$id");
 
@@ -107,6 +129,7 @@ class ${pascal}Repository {
     return await apiController.callApi<dynamic>(
       apiCallModel: apiCallModel,
     );
+''' : "// TODO: Implement to delete item"}
   }
 }
 ''');

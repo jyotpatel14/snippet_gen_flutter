@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:snippet_gen/generate_provider_resource.dart';
 import 'package:snippet_gen/generate_bloc_resource.dart';
 import 'package:snippet_gen/generate_model.dart';
+import 'package:snippet_gen/my_print.dart';
 
 void main(List<String> arguments) {
   if (arguments.isEmpty) {
@@ -30,20 +31,25 @@ void main(List<String> arguments) {
 
 void handleGenerate(List<String> arguments) {
   if (arguments.length < 3) {
-    print("Usage: generate <provider|bloc> <entity>");
+    print("Usage: generate <provider|bloc> <entity> [--abstract]");
     return;
   }
 
   final type = arguments[1];
   final entity = arguments[2];
 
+  // 👇 detect flag
+  final isRepoAbstract = arguments.contains('--abstract');
+
+  MyPrint.printOnConsole("/bin $isRepoAbstract");
+
   switch (type) {
     case 'provider':
-      generateProviderResource(entity);
+      generateProviderResource(entity, isRepoAbstract);
       break;
 
     case 'bloc':
-      generateBlocResource(entity);
+      generateBlocResource(entity, isRepoAbstract);
       break;
 
     default:

@@ -6,7 +6,7 @@ import 'package:snippet_gen/templates/bloc/state.dart';
 import 'package:snippet_gen/templates/common/generate_model.dart';
 import 'package:snippet_gen/templates/common/repository.dart';
 
-void generateBlocResource(String entity) {
+void generateBlocResource(String entity, bool isRepoAbstract) {
   final lower = entity.toLowerCase();
   final pascal = entity;
 
@@ -19,7 +19,7 @@ void generateBlocResource(String entity) {
   generateBloc(baseDir.path, pascal, lower);
   generateEvent(baseDir.path, pascal);
   generateState(baseDir.path, pascal);
-  generateRepository(baseDir.path, pascal, lower);
+  generateRepository(baseDir.path, pascal, lower, isRepoAbstract);
 
   generateModel(modelDir.path, pascal, lower);
   generateDtos(modelDir.path, pascal, lower);
