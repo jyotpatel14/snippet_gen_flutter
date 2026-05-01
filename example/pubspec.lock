@@ -153,7 +153,7 @@ packages:
     source: sdk
     version: "0.0.0"
   snippet_gen:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       path: ".."
       relative: true
