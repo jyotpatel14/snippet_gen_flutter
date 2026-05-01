@@ -1,6 +1,6 @@
 name: snippet_gen
 description: A Dart CLI code generator for provider, bloc architecture, and JSON-to-Dart models with safe parsing and nested class support.
-version: 1.0.0
+version: 1.0.1
 # repository: https://github.com/my_org/my_repo
 
 homepage: https://github.com/jyotpatel14/snippet_gen_flutter
