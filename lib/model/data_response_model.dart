@@ -1,5 +1,6 @@
 import 'app_error_model.dart';
 
+///Maps the response to model
 class DataResponseModel<T> {
   final T? data;
   final AppErrorModel? appErrorModel;

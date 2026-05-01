@@ -5,6 +5,17 @@ import 'package:snippet_gen/templates/provider/controller.dart';
 import 'package:snippet_gen/templates/provider/provider.dart';
 import 'package:snippet_gen/templates/common/repository.dart';
 
+/// Generates a provider-based resource structure.
+///
+/// Includes:
+/// - Controller
+/// - Provider
+/// - Repository
+/// - Model & DTOs
+///
+/// [entity] is the name of the resource (e.g., User).
+/// [isRepoAbstract] determines if repository methods are abstract.
+
 void generateProviderResource(String entity, bool isRepoAbstract) {
   final lower = entity.toLowerCase();
   final pascal = entity;

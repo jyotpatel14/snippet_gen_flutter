@@ -1,3 +1,4 @@
+///Repesents an Error generated as a response
 class AppErrorModel {
   dynamic message;
   Exception? exception;

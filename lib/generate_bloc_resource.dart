@@ -6,6 +6,18 @@ import 'package:snippet_gen/templates/bloc/state.dart';
 import 'package:snippet_gen/templates/common/generate_model.dart';
 import 'package:snippet_gen/templates/common/repository.dart';
 
+/// Generates a provider-based resource structure.
+///
+/// Includes:
+/// - Bloc
+/// - Events
+/// - State
+/// - Repository
+/// - Model & DTOs
+///
+/// [entity] is the name of the resource (e.g., User).
+/// [isRepoAbstract] determines if repository methods are abstract.
+
 void generateBlocResource(String entity, bool isRepoAbstract) {
   final lower = entity.toLowerCase();
   final pascal = entity;

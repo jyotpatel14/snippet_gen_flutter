@@ -1,9 +1,9 @@
-import 'package:your_project/utils/parsing_helper.dart';
+import 'package:snippet_gen/parsing_helper.dart';
 
 class Hobbies {
   final List<String>? music;
 
-  Hobbies({this.music, });
+  Hobbies({this.music});
 
   factory Hobbies.fromJson(Map<String, dynamic> json) {
     return Hobbies(
@@ -18,21 +18,22 @@ class Hobbies {
   }
 }
 
-
 class User {
   final String? userId;
   final String? phone;
   final bool? isActive;
   final Hobbies? hobbies;
 
-  User({this.userId, this.phone, this.isActive, this.hobbies, });
+  User({this.userId, this.phone, this.isActive, this.hobbies});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       userId: ParsingHelper.parseStringNullableMethod(json['user_id']),
       phone: ParsingHelper.parseStringNullableMethod(json['phone']),
       isActive: ParsingHelper.parseBoolNullableMethod(json['is_active']),
-      hobbies: json['hobbies'] != null ? Hobbies.fromJson(json['hobbies']) : null,
+      hobbies: json['hobbies'] != null
+          ? Hobbies.fromJson(json['hobbies'])
+          : null,
     );
   }
 
@@ -45,5 +46,3 @@ class User {
     return data;
   }
 }
-
-
