@@ -186,6 +186,16 @@ lib/backend/user/
 ├── user_repository.dart
 ```
 
+### Provider Models
+
+```
+lib/backend/user/model
+├── user_model.dart
+├── create_user_request_dto.dart
+├── update_user_request_dto.dart
+├── user_response_dto.dart
+```
+
 ### BLoC
 
 ```
@@ -196,32 +206,15 @@ lib/blocs/user/
 ├── user_repository.dart
 ```
 
-### Models
+### Bloc Models
 
 ```
-lib/model/user/
+lib/bloc/user/model
 ├── user_model.dart
 ├── create_user_request_dto.dart
 ├── update_user_request_dto.dart
 ├── user_response_dto.dart
 ```
-
----
-
-## 🔥 Roadmap
-
-- [ ] Typed model generation (no `dynamic`)
-- [ ] List<Model> support for nested arrays
-- [ ] DateTime auto-detection
-- [ ] Equatable + copyWith generation
-- [ ] CLI flags like:
-  - `--provider`
-  - `--bloc`
-  - `--model`
-
-- [ ] API endpoint auto-generation
-
----
 
 ## 💬 Contributing
 

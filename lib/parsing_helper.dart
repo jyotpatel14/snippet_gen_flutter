@@ -1,8 +1,8 @@
 // For Parsing Dynamic Values To Specific Type
 
-// import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 
-// import 'my_print.dart';
+import 'my_print.dart';
 
 class ParsingHelper {
   static String parseStringMethod(dynamic value, {String defaultValue = ""}) {
@@ -103,63 +103,63 @@ class ParsingHelper {
     }
   }
 
-  // static DateTime? parseDateTimeMethod(
-  //   dynamic value, {
-  //   DateTime? defaultValue,
-  //   String dateFormat = "",
-  // }) {
-  //   if (value is DateTime) {
-  //     return value;
-  //   }
-  //   // else if(value is Timestamp) {
-  //   //   return value.toDate();
-  //   // }
-  //   else if (value is String) {
-  //     DateTime? dateTime;
-  //     MyPrint.printOnConsole("DateTime Value:$value");
-  //     if (dateFormat.isNotEmpty) {
-  //       try {
-  //         dateTime = DateFormat(dateFormat).parse(value);
-  //       } catch (e, s) {
-  //         MyPrint.printOnConsole(
-  //           "Error in Converting from String to DateTime with Format '$dateFormat':$e",
-  //         );
-  //         MyPrint.printOnConsole(s);
-  //       }
-  //     }
+  static DateTime? parseDateTimeMethod(
+    dynamic value, {
+    DateTime? defaultValue,
+    String dateFormat = "",
+  }) {
+    if (value is DateTime) {
+      return value;
+    }
+    // else if(value is Timestamp) {
+    //   return value.toDate();
+    // }
+    else if (value is String) {
+      DateTime? dateTime;
+      MyPrint.printOnConsole("DateTime Value:$value");
+      if (dateFormat.isNotEmpty) {
+        try {
+          dateTime = DateFormat(dateFormat).parse(value);
+        } catch (e, s) {
+          MyPrint.printOnConsole(
+            "Error in Converting from String to DateTime with Format '$dateFormat':$e",
+          );
+          MyPrint.printOnConsole(s);
+        }
+      }
 
-  //     if (dateTime == null) {
-  //       int? intValue = int.tryParse(value);
-  //       if (intValue != null) {
-  //         try {
-  //           dateTime = DateTime.fromMillisecondsSinceEpoch(intValue);
-  //         } catch (e, s) {
-  //           MyPrint.printOnConsole(
-  //             "Error in Converting from String(int) to DateTime:$e",
-  //           );
-  //           MyPrint.printOnConsole(s);
-  //         }
-  //       }
-  //     }
+      if (dateTime == null) {
+        int? intValue = int.tryParse(value);
+        if (intValue != null) {
+          try {
+            dateTime = DateTime.fromMillisecondsSinceEpoch(intValue);
+          } catch (e, s) {
+            MyPrint.printOnConsole(
+              "Error in Converting from String(int) to DateTime:$e",
+            );
+            MyPrint.printOnConsole(s);
+          }
+        }
+      }
 
-  //     dateTime ??= DateTime.tryParse(value);
+      dateTime ??= DateTime.tryParse(value);
 
-  //     return dateTime ?? defaultValue;
-  //   } else if (value is int) {
-  //     DateTime? dateTime;
+      return dateTime ?? defaultValue;
+    } else if (value is int) {
+      DateTime? dateTime;
 
-  //     try {
-  //       dateTime = DateTime.fromMillisecondsSinceEpoch(value);
-  //     } catch (e, s) {
-  //       MyPrint.printOnConsole("Error in Converting from int to DateTime:$e");
-  //       MyPrint.printOnConsole(s);
-  //     }
+      try {
+        dateTime = DateTime.fromMillisecondsSinceEpoch(value);
+      } catch (e, s) {
+        MyPrint.printOnConsole("Error in Converting from int to DateTime:$e");
+        MyPrint.printOnConsole(s);
+      }
 
-  //     return dateTime ?? defaultValue;
-  //   } else {
-  //     return defaultValue;
-  //   }
-  // }
+      return dateTime ?? defaultValue;
+    } else {
+      return defaultValue;
+    }
+  }
 
   static List<Map<K, V>> parseMapsListMethod<K, V>(
     dynamic value, {
